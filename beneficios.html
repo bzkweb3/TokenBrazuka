@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Benefícios - Brazuka</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand-logo-box">
+        <a href="index.html">
+          <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
+        </a>
+      </div>
+      <button class="wallet-btn" onclick="connectWallet()">
+        <i class="fas fa-wallet"></i> Conectar Wallet
+      </button>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="beneficios.html">Benefícios</a></li>
+      <li><a href="staking.html">Staking</a></li>
+      <li><a href="pre-venda.html">Pré-venda</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2><i class="fas fa-gift"></i> Sistema de Benefícios</h2>
+    <p>
+      O sistema de benefícios do Brazuka Token recompensa holders que mantêm seus tokens por pelo menos <strong>10 dias</strong>.
+      A cada <strong>15 dias</strong>, ocorre uma distribuição proporcional em BRAZ para quem atender aos critérios.
+    </p>
+
+    <h3><i class="fas fa-clock"></i> Regras</h3>
+    <ul>
+      <li>Mínimo de 10 dias de holding</li>
+      <li>Distribuição a cada 15 dias</li>
+      <li>Saldo de BRAZ deve estar fora do staking</li>
+      <li>Recompensas apenas para tokens não movimentados</li>
+    </ul>
+
+    <h3><i class="fas fa-bolt"></i> Próxima Distribuição</h3>
+    <p>A distribuição está prevista para: <strong>em breve</strong></p>
+
+    <button class="cta" onclick="connectWallet()">Conectar Wallet</button>
+    <p id="wallet-address"></p>
+    <p id="wallet-balance"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Brazuka Token. Todos os direitos reservados.</p>
+    <div class="marca-mae">
+      <img src="Images/Dominand
