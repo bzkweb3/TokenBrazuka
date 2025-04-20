@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pré-venda - Brazuka</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand-logo-box">
+        <a href="index.html">
+          <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
+        </a>
+      </div>
+      <button class="wallet-btn" onclick="connectWallet()">
+        <i class="fas fa-wallet"></i> Conectar Wallet
+      </button>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="beneficios.html">Benefícios</a></li>
+      <li><a href="staking.html">Staking</a></li>
+      <li><a href="pre-venda.html">Pré-venda</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2><i class="fas fa-hand-holding-usd"></i> Pré-venda Oficial</h2>
+    <p>Aproveite as fases da pré-venda do Brazuka Token e garanta seus tokens antes do lançamento oficial!</p>
+
+    <h3><i class="fas fa-list-ol"></i> Fases</h3>
+    <ol>
+      <li><strong>Fase 1:</strong> R$ 0,00010 por BRAZ – 10 milhões disponíveis</li>
+      <li><strong>Fase 2:</strong> R$ 0,00015 por BRAZ – 7 milhões disponíveis</li>
+      <li><strong>Fase 3:</strong> R$ 0,00020 por BRAZ – 4 milhões disponíveis</li>
+    </ol>
+
+    <h3><i class="fas fa-credit-card"></i> Pagamento via Pix</h3>
+    <p>Copie a chave Pix abaixo e envie o valor desejado. Após o envio, clique em “Já enviei” para registrar.</p>
+
+    <input type="text" id="pixKey" value="pix@brazukatoken.com" readonly style="width:100%; padding:10px; margin-bottom:10px;">
+    <button class="cta" onclick="copiarPix()">Copiar Chave Pix</button>
+    <br><br>
+    <button class="cta" onclick="confirmarEnvio()">Já enviei</button>
+
+    <p id="pix-status" style="margin-top:15px; font-weight: bold; color: green;"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Brazuka Token. Todos os direitos reservados.</p>
+    <div class="marca-mae">
+      <img src="Images/Dominandocripto.png" alt="Dominando o Cripto" />
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function copiarPix() {
+      const pix = document.getElementById("pixKey");
+      navigator.clipboard.writeText(pix.value).then(() => {
+        alert("Chave Pix copiada!");
+      });
+    }
+
+    function confirmarEnvio() {
+      const valor = prompt("Digite o valor que você enviou (R$):");
+      if (valor) {
+        document.getElementById("pix-status").innerText = `Valor de R$ ${valor} registrado! Aguardando confirmação automática.`;
+        
+        // aqui futuramente entra o webhook para o Telegram
+        // exemplo: fetch("https://suaapi.com/telegram", { method: "POST", body: JSON.stringify({ valor, wallet }) });
+      }
+    }
+  </script>
+</body>
+</html>
