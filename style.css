@@ -192,3 +192,18 @@ footer a:hover {
 .wallet-info p {
   margin: 2px 0;
 }
+
+.mascote-box {
+  text-align: center;
+}
+
+.mascote-box img {
+  max-width: 220px;
+  margin: 20px auto;
+  display: block;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+}
