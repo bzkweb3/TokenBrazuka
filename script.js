@@ -16,12 +16,12 @@ async function connectWallet() {
       const signer = provider.getSigner();
       const address = await signer.getAddress();
 
-      // Mostra o endereço conectado no HTML (abreviado)
+      // Mostrar endereço conectado abreviado
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
       document.querySelector('button.cta').innerText = "Wallet Conectada";
 
-      // Mostrar saldo do token
+      // Mostrar saldo BRAZ
       mostrarSaldoBRAZ(provider, address);
 
     } catch (err) {
@@ -33,15 +33,15 @@ async function connectWallet() {
   }
 }
 
-// ABI mínima para ler saldo e decimais
+// ABI mínima para leitura
 const tokenABI = [
   "function balanceOf(address owner) view returns (uint256)",
   "function decimals() view returns (uint8)"
 ];
 
-// Função para mostrar o saldo do token BRAZ
+// Consulta e mostra o saldo do token
 async function mostrarSaldoBRAZ(provider, address) {
-  const tokenAddress = "0x935814FF77528d57AE6Fc94bC70f09eAcC89ceDE"; // BRAZ na BSC Testnet
+  const tokenAddress = "0x935814FF77528d57AE6Fc94bC70f09eAcC89ceDE"; // contrato BRAZ na BSC Testnet
   const contract = new ethers.Contract(tokenAddress, tokenABI, provider);
 
   try {
@@ -56,7 +56,7 @@ async function mostrarSaldoBRAZ(provider, address) {
   }
 }
 
-// Trocar para Binance Smart Chain TESTNET
+// Função para trocar rede para BSC Testnet
 async function switchToBSC_Testnet() {
   const bscTestnet = {
     chainId: '0x61',
