@@ -1,8 +1,9 @@
+/* RESET E BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -10,9 +11,10 @@ body {
   color: #f1f1f1;
   line-height: 1.6;
   font-size: 16px;
-  padding: 20px;
+  padding: 0;
 }
 
+/* HEADER */
 header {
   text-align: center;
   padding: 40px 20px;
@@ -21,14 +23,16 @@ header {
 }
 
 header img {
-  width: 120px;
+  width: 100%;
+  max-width: 400px;
   margin-bottom: 20px;
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #FFD700;
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 header p {
@@ -36,6 +40,25 @@ header p {
   color: #ccc;
 }
 
+.cta {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #FFD700;
+  color: #111;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background-color: #e6c200;
+}
+
+/* SECTIONS */
 section {
   max-width: 900px;
   margin: 40px auto;
@@ -51,6 +74,18 @@ section h2 {
   font-size: 1.8rem;
   border-bottom: 2px solid #FFD700;
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+section h3 {
+  color: #FFD700;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
 }
 
 section p {
@@ -58,10 +93,90 @@ section p {
   margin-bottom: 15px;
 }
 
+ul li, ol li {
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+/* BADGE DE SALDO */
+#wallet-balance {
+  background-color: #333;
+  padding: 8px 16px;
+  display: inline-block;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #FFD700;
+  font-size: 1rem;
+}
+
+/* BOTÃO FLOTANTE DE COMPRA */
+#buy-btn-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #FFD700;
+  color: #111;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  z-index: 999;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#buy-btn-fixed:hover {
+  background-color: #e6c200;
+  transform: scale(1.05);
+}
+
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
   margin-top: 40px;
   font-size: 0.9rem;
   color: #888;
+  border-top: 1px solid #333;
+  background-color: #111;
+}
+
+footer a {
+  color: #FFD700;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.marca-mae {
+  margin-top: 20px;
+}
+
+.marca-mae img {
+  max-width: 80px;
+  opacity: 0.8;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header img {
+    width: 80px;
+  }
+
+  section {
+    padding: 15px;
+    margin: 20px 10px;
+  }
+
+  .cta {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
 }
