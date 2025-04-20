@@ -13,10 +13,10 @@ body {
 }
 
 header {
-  background-color: #ffffffcc;
-  text-align: center;
-  padding: 40px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
 }
 
 header img {
@@ -127,21 +127,16 @@ footer a:hover {
 }
 .header-banner {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: auto;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
 }
 
 .header-banner img {
-  width: 100vw;
+  width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-  margin: 0;
-  padding: 0;
-  border-radius: 0;
 }
 
 .wallet-btn {
