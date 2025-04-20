@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Staking - Brazuka</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand-logo-box">
+        <a href="index.html">
+          <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
+        </a>
+      </div>
+      <button class="wallet-btn" onclick="connectWallet()">
+        <i class="fas fa-wallet"></i> Conectar Wallet
+      </button>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="beneficios.html">Benefícios</a></li>
+      <li><a href="staking.html">Staking</a></li>
+      <li><a href="pre-venda.html">Pré-venda</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2><i class="fas fa-lock"></i> Staking Brazuka</h2>
+    <p>
+      Ao realizar staking com seus BRAZ, você garante uma fonte de renda passiva em moedas como USDT, BNB ou BRL. 
+      Os ciclos de staking possuem prazos configuráveis e uma penalidade de 30% sobre os lucros em caso de retirada antecipada.
+    </p>
+
+    <h3><i class="fas fa-info-circle"></i> Regras do Staking</h3>
+    <ul>
+      <li>Recompensa paga em outra moeda (USDT, BNB...)</li>
+      <li>Penalidade de 30% sobre o lucro ao retirar antes do prazo</li>
+      <li>Cada stake tem um ciclo individual</li>
+      <li>Tokens continuam bloqueados até o fim do ciclo</li>
+    </ul>
+
+    <h3><i class="fas fa-chart-bar"></i> Seu Staking</h3>
+    <p>Conecte sua carteira para ver seus stakes ativos.</p>
+
+    <button class="cta" onclick="connectWallet()">Conectar Wallet</button>
+    <p id="wallet-address"></p>
+    <p id="wallet-balance"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Brazuka Token. Todos os direitos reservados.</p>
+    <div class="marca-mae">
+      <img src="Images/Dominandocripto.png" alt="Dominando o Cripto" />
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
