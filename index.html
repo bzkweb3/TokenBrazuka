@@ -9,9 +9,9 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
-<body>  
+<body>
   <header>
-    <img src="Images/logo.png" alt="Logomarca Brazuka">
+    <img src="images/logomarca.png" alt="Logomarca Brazuka">
     <h1>Brazuka Token</h1>
     <p>Comemore. Invista. Colecione.</p>
     <a class="cta" href="#sobre"><i class="fas fa-arrow-down"></i> Conheça o Projeto</a>
@@ -19,29 +19,24 @@
     <button class="cta" onclick="connectWallet()"><i class="fas fa-wallet"></i> Conectar Wallet</button>
     <p id="wallet-address" style="margin-top:10px; color:#FFD700; word-break: break-all;"></p>
     <p id="wallet-balance" style="color:#0f0; font-weight:bold;"></p>
-  </header>  
+  </header>
 
   <section id="mascote" style="text-align:center; background:#181818;">
     <h2><i class="fas fa-fire"></i> Nosso Mascote</h2>
     <img src="images/mascote.png" alt="Mascote Brazuka" class="mascote" style="max-width:200px; margin-top:15px;">
     <p style="margin-top:10px; color:#ccc;">O Tucano Brazuka representa a força tropical do nosso projeto. Com corrente dourada e óculos escuros, ele voa alto rumo à inovação!</p>
-  </section>  
+  </section>
 
   <section id="sobre">
     <h2><i class="fas fa-info-circle"></i> Sobre o Projeto</h2>
     <p>O Brazuka Token é a materialização de um sonho nacional: unir o espírito brasileiro com a inovação da blockchain. Nosso projeto nasce com propósito, identidade e uma comunidade forte.</p>
-
     <h2><i class="fas fa-question-circle"></i> Por que Brazuka?</h2>
-
     <h3><i class="fas fa-coins"></i> Staking Premiado</h3>
     <p>Ganhe recompensas mensais por manter seus tokens em staking.</p>
-
     <h3><i class="fas fa-chart-line"></i> Distribuição de Lucros</h3>
     <p>Parte das taxas retornam para os holders e participantes ativos.</p>
-
     <h3><i class="fas fa-image"></i> NFTs Exclusivos</h3>
     <p>Itens colecionáveis que celebram a identidade do projeto.</p>
-
     <h3><i class="fas fa-shield-alt"></i> Foco em Segurança</h3>
     <p>Contrato auditado, funções moduláveis e sistema anti-whale.</p>
 
@@ -68,36 +63,18 @@
       <li>Troque BNB por BRAZUKA</li>
       <li>Segure seus tokens e aproveite os benefícios</li>
     </ol>
-  </section>  
+  </section>
 
   <footer>
     <p>© 2025 Brazuka Token. Todos os direitos reservados.</p>
     <p><i class="fab fa-github"></i> <a href="https://github.com/bzkweb3">@bzkweb3</a> | <i class="fas fa-envelope"></i> brazukatoken@gmail.com</p>
     <div class="marca-mae">
       <p>Projeto associado à:</p>
-      <img src="images/dominando-cripto (1).png" alt="Dominando o Cripto" style="max-width:200px; margin-top:15px;">
+      <img src="images/Dominando-cripto.png" alt="Dominando o Cripto" style="max-width:200px; margin-top:15px;">
     </div>
-  </footer>  
+  </footer>
 
-  <script>
-    async function connectWallet() {
-      if (window.ethereum) {
-        try {
-          const provider = new ethers.providers.Web3Provider(window.ethereum);
-          await provider.send("eth_requestAccounts", []);
-          const signer = provider.getSigner();
-          const address = await signer.getAddress();
-          document.getElementById("wallet-address").innerText = `Conectado: ${address}`;
-        } catch (error) {
-          alert("Conexão recusada.");
-        }
-      } else {
-        alert("MetaMask não detectado.");
-      }
-    }
-  </script>
   <script src="script.js"></script>
-
   <a href="https://pancakeswap.finance/swap?outputCurrency=0x935814FF77528d57AE6Fc94bC70f09eAcC89ceDE&chain=testnet" target="_blank" id="buy-btn-fixed">
     Comprar BRAZ
   </a>
