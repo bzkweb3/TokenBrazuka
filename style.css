@@ -127,14 +127,20 @@ footer a:hover {
 }
 .header-banner {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  height: auto;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .header-banner img {
-  width: 100%;
+  width: 100vw;
   height: auto;
   display: block;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
   border-radius: 0;
 }
 
