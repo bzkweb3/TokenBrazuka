@@ -178,3 +178,17 @@ footer a:hover {
   display: block;
   object-fit: cover;
 }
+
+.wallet-info {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  text-align: right;
+  color: #fff;
+  font-size: 0.85rem;
+  z-index: 9;
+}
+
+.wallet-info p {
+  margin: 2px 0;
+}
