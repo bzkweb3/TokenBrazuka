@@ -72,41 +72,7 @@
   </footer>
 
   <script src="script.js"></script>
-<script>
-let carteiraConectada = null;
 
-function gerarPix() {
-  const valor = prompt("Digite o valor em R$ para gerar o QR Pix:");
-
-  if (!carteiraConectada) {
-    alert("Você precisa conectar sua carteira antes.");
-    return;
-  }
-
-  const carteira = carteiraConectada;
-
-  fetch("https://brazuka-api.vercel.app/pix/generate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      valorBRL: valor,
-      carteira: carteira,
-      fase: "1"
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.qrCode && data.payload) {
-        document.getElementById("qr-code").src = data.qrCode;
-        document.getElementById("pix-code").innerText = data.payload;
-        document.getElementById("pix-container").style.display = "block";
-        document.getElementById("pix-status").innerText = "Aguardando confirmação automática...";
-      } else {
-        alert("Erro ao gerar QR Pix. Tente novamente.");
-      }
-    });
-}
-</script>
   
 </body>
 </html>
