@@ -8,24 +8,26 @@
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
-  <header>
-    <div class="topbar">
-  <div class="brand-logo-box">
-    <a href="index.html">
-      <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
-    </a>
-  </div>
+  <!-- TOPO HEADER -->
+<header>
+  <div class="topbar">
+    <div class="brand-logo-box">
+      <a href="index.html">
+        <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
+      </a>
+    </div>
 
-  <div class="wallet-box">
-  <button class="wallet-btn" id="connect-btn" onclick="connectWallet()">...</button>
-    <i class="fas fa-wallet"></i> Conectar Wallet
-  </button>
-  <div class="wallet-info">
-    <p id="wallet-address"></p>
-    <p id="wallet-balance"></p>
+    <div class="wallet-box">
+      <button class="wallet-btn" id="connect-btn" onclick="connectWallet()">
+        <i class="fas fa-wallet"></i> Conectar Wallet
+      </button>
+      <div class="wallet-info">
+        <p id="wallet-address"></p>
+        <p id="wallet-balance"></p>
+      </div>
+    </div>
   </div>
-  </div>
-  </header>
+</header>
 
   <nav class="navbar">
     <ul>
@@ -72,13 +74,11 @@
 
   <script src="script.js"></script>
 <script>
-// Variável global para guardar o endereço real da carteira
+let carteiraConectada = null;
 
-// Função para gerar o QR Pix
 function gerarPix() {
   const valor = prompt("Digite o valor em R$ para gerar o QR Pix:");
 
-  // Verifica se a carteira está conectada
   if (!carteiraConectada) {
     alert("Você precisa conectar sua carteira antes.");
     return;
@@ -95,17 +95,17 @@ function gerarPix() {
       fase: "1"
     })
   })
-  .then(res => res.json())
-  .then(data => {
-    if (data.qrCode && data.payload) {
-      document.getElementById("qr-code").src = data.qrCode;
-      document.getElementById("pix-code").innerText = data.payload;
-      document.getElementById("pix-container").style.display = "block";
-      document.getElementById("pix-status").innerText = "Aguardando confirmação automática...";
-    } else {
-      alert("Erro ao gerar QR Pix. Tente novamente.");
-    }
-  });
+    .then(res => res.json())
+    .then(data => {
+      if (data.qrCode && data.payload) {
+        document.getElementById("qr-code").src = data.qrCode;
+        document.getElementById("pix-code").innerText = data.payload;
+        document.getElementById("pix-container").style.display = "block";
+        document.getElementById("pix-status").innerText = "Aguardando confirmação automática...";
+      } else {
+        alert("Erro ao gerar QR Pix. Tente novamente.");
+      }
+    });
 }
 </script>
   
