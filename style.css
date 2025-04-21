@@ -88,12 +88,6 @@ footer a:hover {
   margin-top: 15px;
 }
 
-#wallet-address, #wallet-balance {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #004d40;
-}
-
 #buy-btn-fixed {
   position: fixed;
   bottom: 20px;
@@ -113,28 +107,6 @@ footer a:hover {
   background-color: #ffe44d;
   transform: scale(1.08) rotate(-2deg);
   box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
-}
-
-.wallet-btn {
-  position: relative;
-  top: 20px;
-  right: 20px;
-  background-color: #FFCB05;
-  color: #002776;
-  padding: 8px 12px; /* atualizado aqui com o menor */
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 10;
-  font-size: 0.9rem; /* menor */
-  transition: background-color 0.3s ease;
-  margin-left: auto;
-}
-
-.wallet-btn:hover {
-  background-color: #ffe44d;
 }
 
 .topbar {
@@ -165,17 +137,6 @@ footer a:hover {
   display: block;
   object-fit: cover;
   border-bottom: 2px solid #00A859;
-}
-
-.wallet-info {
-  position: relative;
-  margin-top: 8px;
-  text-align: right;
-  font-size: 0.85rem;
-}
-
-.wallet-info p {
-  margin: 2px 0;
 }
 
 .mascote-box {
@@ -273,21 +234,6 @@ ul li, ol li {
   color: #fff;
 }
 
-.wallet-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
-#wallet-address {
-  font-weight: bold;
-  color: #004d40;
-  white-space: nowrap;
-  margin-right: 10px;
-}
-
 #pix-container {
   margin-top: 20px;
   padding: 15px;
@@ -296,13 +242,41 @@ ul li, ol li {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
 }
 
+.wallet-btn {
+  position: relative;
+  background-color: #FFCB05;
+  color: #002776;
+  padding: 8px 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 10;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  margin-left: auto;
+}
+
 @media (max-width: 600px) {
-  .wallet-box {
-    flex-direction: column;
-    align-items: flex-end;
-  }
+.wallet-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+}
+}
 
-  #wallet-address, #wallet-balance {
-    font-size: 0.75rem;
+.wallet-info {
+  text-align: right;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
 
+#wallet-address,
+#wallet-balance {
+  font-weight: bold;
+  color: #004d40;
 }
