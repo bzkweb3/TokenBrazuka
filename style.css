@@ -273,3 +273,16 @@ ul li, ol li {
 .navbar ul li a:hover {
   color: #fff;
 }
+
+.wallet-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#wallet-address {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #FFCB05;
+  font-weight: bold;
+}
