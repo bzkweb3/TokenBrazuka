@@ -1,5 +1,5 @@
 console.log("Site Brazuka carregado com sucesso!");
-
+let carteiraConectada = null;
 // Função para conectar a carteira MetaMask
 async function connectWallet() {
   if (typeof window.ethereum !== 'undefined') {
@@ -15,6 +15,8 @@ async function connectWallet() {
 
       const signer = provider.getSigner();
       const address = await signer.getAddress();
+
+      carteiraConectada = address;
 
       // Mostrar endereço conectado abreviado
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
