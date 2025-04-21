@@ -276,13 +276,15 @@ ul li, ol li {
 
 .wallet-box {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 #wallet-address {
-  margin-top: 5px;
-  font-size: 0.85rem;
-  color: #FFCB05;
   font-weight: bold;
+  color: #004d40;
+  white-space: nowrap;
+  margin-right: 10px;
 }
