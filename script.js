@@ -16,11 +16,16 @@ async function connectWallet() {
       const address = await signer.getAddress();
       carteiraConectada = address;
 
+      // Oculta botão de conexão após conectar
+const connectBtn = document.getElementById("connect-btn");
+if (connectBtn) connectBtn.style.display = "none";
+
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
 
-      const pixBtn = document.getElementById("pix-button");
-      if (pixBtn) pixBtn.style.display = "inline-block";
+      // Exibir botão de gerar Pix, se ele existir
+const pixBtn = document.getElementById("pix-button");
+if (pixBtn) pixBtn.style.display = "inline-block";
 
       mostrarSaldoBRAZ(provider, address);
     } catch (err) {
