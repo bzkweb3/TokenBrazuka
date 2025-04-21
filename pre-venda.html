@@ -10,14 +10,18 @@
 <body>
   <header>
     <div class="topbar">
-      <div class="brand-logo-box">
-        <a href="index.html">
-          <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
-        </a>
-      </div>
-      <button class="wallet-btn" onclick="connectWallet()">
-        <i class="fas fa-wallet"></i> Conectar Wallet
-      </button>
+  <div class="brand-logo-box">
+    <a href="index.html">
+      <img src="Images/logo.png" alt="Logo Brazuka" class="brand-logo" />
+    </a>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: flex-end;">
+    <button class="wallet-btn" onclick="connectWallet()">
+      <i class="fas fa-wallet"></i> Conectar Wallet
+    </button>
+    <p id="wallet-address" style="color: #FFCB05; font-size: 0.85rem; margin-top: 4px;"></p>
+  </div>
     </div>
   </header>
 
