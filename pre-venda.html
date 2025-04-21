@@ -71,32 +71,39 @@
         alert("Chave Pix copiada!");
       });
     }
+function confirmarEnvioPix() {
+  const valor = prompt("Digite o valor que você enviou (em R$):");
+  const fase = "1";
+  const valorUSD = (parseFloat(valor) / 4.90).toFixed(2);
+  let wallet = document.getElementById("wallet-address").innerText || "Não conectada";
+  wallet = wallet.replace("Conectado: ", "");
+  const carteiraFormatada = wallet.length > 10 ? wallet.slice(0, 6) + "..." + wallet.slice(-4) : wallet;
 
-  function confirmarEnvioPix() {
-    const valor = prompt("Digite o valor que você enviou (em R$):");
-    const fase = "1"; // editar se quiser fases dinâmicas
-    const valorUSD = (parseFloat(valor) / 4.90).toFixed(2); // estimativa
-    let wallet = document.getElementById("wallet-address").innerText || "Não conectada";
-    wallet = wallet.replace("Conectado: ", "");
-    const carteiraFormatada = wallet.length > 10 ? wallet.slice(0, 6) + "..." + wallet.slice(-4) : wallet;
+  if (valor) {
+    const mensagem = `
+🚨 NOVA COMPRA NO PIX
 
-    if (valor) {
-      fetch("https://brazuka-firebase-functions.web.app/notify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          valorBRL: valor,
-          valorUSD: valorUSD,
-          fase: fase,
-          carteira: carteiraFormatada,
-          tipo: "PIX"
-        })
-      });
+Valor: R$ ${valor} (≈ $${valorUSD})
+Fase: ${fase}
+Carteira: ${carteiraFormatada}
+Data: ${new Date().toLocaleString("pt-BR")}
+`;
 
-      document.getElementById("pix-status").innerText = `Compra de R$ ${valor} registrada! Aguardando confirmação.`;
-    }
+    const url = `https://api.telegram.org/bot8140733205:AAFWu4UFIK191AjlUJobOk4lcf91uzX17FA/sendMessage`;
+    
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: "-1002585950823",
+        text: mensagem
+      })
+    });
+
+    document.getElementById("pix-status").innerText = `Compra de R$ ${valor} registrada! Envio confirmado.`;
   }
-</script>
+}
+  </script>
   
 </body>
 </html>
