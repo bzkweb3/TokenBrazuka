@@ -19,8 +19,14 @@ async function connectWallet() {
       // Mostrar endereço conectado abreviado
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
-      document.querySelector('button.cta').innerText = "Wallet Conectada";
 
+      const ctaButton = document.querySelector('button.cta');
+if (ctaButton) ctaButton.innerText = "Wallet Conectada";
+
+// Exibir botão de gerar Pix, se existir
+const pixBtn = document.getElementById("pix-button");
+if (pixBtn) pixBtn.style.display = "inline-block";
+      
       // Mostrar saldo BRAZ
       mostrarSaldoBRAZ(provider, address);
 
