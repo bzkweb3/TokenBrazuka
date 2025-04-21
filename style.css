@@ -168,13 +168,10 @@ footer a:hover {
 }
 
 .wallet-info {
-  position: absolute;
-  top: 60px;
-  right: 20px;
+  position: relative;
+  margin-top: 8px;
   text-align: right;
-  color: #fff;
   font-size: 0.85rem;
-  z-index: 9;
 }
 
 .wallet-info p {
