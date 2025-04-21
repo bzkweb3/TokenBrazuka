@@ -69,16 +69,20 @@
 
   <script src="script.js"></script>
 <script>
+// Variável global para guardar o endereço real da carteira
+let carteiraConectada = null;
+
+// Função para gerar o QR Pix
 function gerarPix() {
   const valor = prompt("Digite o valor em R$ para gerar o QR Pix:");
-  const wallet = document.getElementById("wallet-address").innerText;
 
-  if (!wallet || wallet === "Não conectada") {
+  // Verifica se a carteira está conectada
+  if (!carteiraConectada) {
     alert("Você precisa conectar sua carteira antes.");
     return;
   }
 
-  const carteira = wallet.replace("Conectado: ", "");
+  const carteira = carteiraConectada;
 
   fetch("https://brazuka-api.vercel.app/pix/generate", {
     method: "POST",
