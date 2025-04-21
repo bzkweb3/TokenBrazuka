@@ -21,8 +21,6 @@ async function connectWallet() {
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
       document.getElementById("connect-box").style.display = "none";
 
-      const ctaButton = document.querySelector('button.cta');
-if (ctaButton) ctaButton.innerText = "Wallet Conectada";
 
 // Exibir botão de gerar Pix, se existir
 const pixBtn = document.getElementById("pix-button");
