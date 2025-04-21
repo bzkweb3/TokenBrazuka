@@ -115,22 +115,22 @@ footer a:hover {
   box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
 }
 
-
 .wallet-btn {
-  position: absolute;
+  position: relative;
   top: 20px;
   right: 20px;
   background-color: #FFCB05;
   color: #002776;
-  padding: 10px 16px;
+  padding: 8px 12px; /* atualizado aqui com o menor */
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   z-index: 10;
-  font-size: 1rem;
+  font-size: 0.9rem; /* menor */
   transition: background-color 0.3s ease;
+  margin-left: auto;
 }
 
 .wallet-btn:hover {
@@ -247,6 +247,19 @@ ul li, ol li {
   max-width: 900px; /* igual ao section */
   gap: 20px;
   flex-wrap: wrap;
+  text-align: center;
+}
+
+.navbar ul li {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .navbar ul li a {
@@ -291,10 +304,5 @@ ul li, ol li {
 
   #wallet-address, #wallet-balance {
     font-size: 0.75rem;
-  }
 
-  .wallet-btn {
-    font-size: 0.9rem;
-    padding: 8px 12px;
-  }
 }
