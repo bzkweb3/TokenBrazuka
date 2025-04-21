@@ -16,16 +16,14 @@ async function connectWallet() {
       const address = await signer.getAddress();
       carteiraConectada = address;
 
-      // Oculta botão de conexão após conectar
-const connectBtn = document.getElementById("connect-btn");
-if (connectBtn) connectBtn.style.display = "none";
-
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
 
-      // Exibir botão de gerar Pix, se ele existir
-const pixBtn = document.getElementById("pix-button");
-if (pixBtn) pixBtn.style.display = "inline-block";
+      const connectBtn = document.getElementById("connect-btn");
+      if (connectBtn) connectBtn.style.display = "none";
+
+      const pixBtn = document.getElementById("pix-button");
+      if (pixBtn) pixBtn.style.display = "inline-block";
 
       mostrarSaldoBRAZ(provider, address);
     } catch (err) {
@@ -37,39 +35,31 @@ if (pixBtn) pixBtn.style.display = "inline-block";
   }
 }
 
-// ABI mínima para leitura
 const tokenABI = [
   "function balanceOf(address owner) view returns (uint256)",
   "function decimals() view returns (uint8)"
 ];
 
-// Consulta e mostra o saldo do token
 async function mostrarSaldoBRAZ(provider, address) {
-  const tokenAddress = "0x935814FF77528d57AE6Fc94bC70f09eAcC89ceDE"; // contrato BRAZ na BSC Testnet
+  const tokenAddress = "0x935814FF77528d57AE6Fc94bC70f09eAcC89ceDE"; // BSC Testnet
   const contract = new ethers.Contract(tokenAddress, tokenABI, provider);
 
   try {
     const rawBalance = await contract.balanceOf(address);
     const decimals = await contract.decimals();
     const balance = ethers.utils.formatUnits(rawBalance, decimals);
-
     document.getElementById("wallet-balance").innerText = `Saldo BRAZ: ${balance}`;
   } catch (err) {
-    console.error("Erro ao buscar saldo do token:", err);
-    document.getElementById("wallet-balance").innerText = "Erro ao obter saldo BRAZ";
+    console.error("Erro ao buscar saldo:", err);
+    document.getElementById("wallet-balance").innerText = "Erro ao obter saldo";
   }
 }
 
-// Função para trocar rede para BSC Testnet
 async function switchToBSC_Testnet() {
   const bscTestnet = {
     chainId: '0x61',
     chainName: 'Binance Smart Chain Testnet',
-    nativeCurrency: {
-      name: 'BNB Test',
-      symbol: 'tBNB',
-      decimals: 18
-    },
+    nativeCurrency: { name: 'BNB Test', symbol: 'tBNB', decimals: 18 },
     rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
     blockExplorerUrls: ['https://testnet.bscscan.com']
   };
@@ -79,7 +69,6 @@ async function switchToBSC_Testnet() {
       method: 'wallet_addEthereumChain',
       params: [bscTestnet]
     });
-    console.log("Rede trocada para Binance Smart Chain Testnet.");
   } catch (error) {
     console.error("Erro ao trocar para BSC Testnet:", error);
   }
