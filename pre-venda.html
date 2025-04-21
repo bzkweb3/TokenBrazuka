@@ -47,8 +47,8 @@
     <input type="text" id="pixKey" value="pix@brazukatoken.com" readonly style="width:100%; padding:10px; margin-bottom:10px;">
     <button class="cta" onclick="copiarPix()">Copiar Chave Pix</button>
     <br><br>
-    <button class="cta" onclick="confirmarEnvio()">Já enviei</button>
-
+    <button class="cta" onclick="confirmarEnvioPix()">Já enviei</button>
+    
     <p id="pix-status" style="margin-top:15px; font-weight: bold; color: green;"></p>
   </section>
 
@@ -68,15 +68,31 @@
       });
     }
 
-    function confirmarEnvio() {
-      const valor = prompt("Digite o valor que você enviou (R$):");
-      if (valor) {
-        document.getElementById("pix-status").innerText = `Valor de R$ ${valor} registrado! Aguardando confirmação automática.`;
-        
-        // aqui futuramente entra o webhook para o Telegram
-        // exemplo: fetch("https://suaapi.com/telegram", { method: "POST", body: JSON.stringify({ valor, wallet }) });
-      }
+  function confirmarEnvioPix() {
+    const valor = prompt("Digite o valor que você enviou (em R$):");
+    const fase = "1"; // editar se quiser fases dinâmicas
+    const valorUSD = (parseFloat(valor) / 4.90).toFixed(2); // estimativa
+    let wallet = document.getElementById("wallet-address").innerText || "Não conectada";
+    wallet = wallet.replace("Conectado: ", "");
+    const carteiraFormatada = wallet.length > 10 ? wallet.slice(0, 6) + "..." + wallet.slice(-4) : wallet;
+
+    if (valor) {
+      fetch("https://bzk-webhook.replit.app/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          valorBRL: valor,
+          valorUSD: valorUSD,
+          fase: fase,
+          carteira: carteiraFormatada,
+          tipo: "PIX"
+        })
+      });
+
+      document.getElementById("pix-status").innerText = `Compra de R$ ${valor} registrada! Aguardando confirmação.`;
     }
-  </script>
+  }
+</script>
+  
 </body>
 </html>
