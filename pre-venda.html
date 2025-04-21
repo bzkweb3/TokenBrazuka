@@ -49,9 +49,19 @@
     <p>Copie a chave Pix abaixo e envie o valor desejado. Após o envio, clique em “Já enviei” para registrar.</p>
 
     <input type="text" id="pixKey" value="pix@brazukatoken.com" readonly style="width:100%; padding:10px; margin-bottom:10px;">
-    <button class="cta" onclick="copiarPix()">Copiar Chave Pix</button>
-    <br><br>
-    <button class="cta" onclick="confirmarEnvioPix()">Já enviei</button>
+
+    <h3><i class="fas fa-credit-card"></i> Pagamento via Pix</h3>
+<p>Conecte sua carteira, defina o valor e escaneie o QR Pix. Após o pagamento, os tokens serão enviados automaticamente.</p>
+
+<button class="cta" onclick="gerarPix()">Gerar QR Pix</button>
+
+<div id="pix-container" style="margin-top: 20px; display: none;">
+  <p><strong>Escaneie com seu app de banco:</strong></p>
+  <img id="qr-code" src="" alt="QR Code Pix" style="max-width: 280px; border: 1px solid #ccc; padding: 8px;"/>
+  <p id="pix-code" style="font-size: 0.85rem; word-break: break-word; background: #f9f9f9; padding: 10px; border-radius: 8px;"></p>
+</div>
+
+<p id="pix-status" style="margin-top:15px; font-weight: bold; color: green;"></p>
     
     <p id="pix-status" style="margin-top:15px; font-weight: bold; color: green;"></p>
   </section>
@@ -64,46 +74,40 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    function copiarPix() {
-      const pix = document.getElementById("pixKey");
-      navigator.clipboard.writeText(pix.value).then(() => {
-        alert("Chave Pix copiada!");
-      });
-    }
-function confirmarEnvioPix() {
-  const valor = prompt("Digite o valor que você enviou (em R$):");
-  const fase = "1";
-  const valorUSD = (parseFloat(valor) / 4.90).toFixed(2);
-  let wallet = document.getElementById("wallet-address").innerText || "Não conectada";
-  wallet = wallet.replace("Conectado: ", "");
-  const carteiraFormatada = wallet.length > 10 ? wallet.slice(0, 6) + "..." + wallet.slice(-4) : wallet;
+<script>
+function gerarPix() {
+  const valor = prompt("Digite o valor em R$ para gerar o QR Pix:");
+  const wallet = document.getElementById("wallet-address").innerText;
 
-  if (valor) {
-    const mensagem = `
-🚨 NOVA COMPRA NO PIX
-
-Valor: R$ ${valor} (≈ $${valorUSD})
-Fase: ${fase}
-Carteira: ${carteiraFormatada}
-Data: ${new Date().toLocaleString("pt-BR")}
-`;
-
-    const url = `https://api.telegram.org/bot8140733205:AAFWu4UFIK191AjlUJobOk4lcf91uzX17FA/sendMessage`;
-
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: "-1002585950823",
-        text: mensagem
-      })
-    });
-
-    document.getElementById("pix-status").innerText = `Compra de R$ ${valor} registrada! Envio confirmado.`;
+  if (!wallet || wallet === "Não conectada") {
+    alert("Você precisa conectar sua carteira antes.");
+    return;
   }
+
+  const carteira = wallet.replace("Conectado: ", "");
+
+  fetch("https://brazuka-api.vercel.app/pix/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      valorBRL: valor,
+      carteira: carteira,
+      fase: "1"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.qrCode && data.payload) {
+      document.getElementById("qr-code").src = data.qrCode;
+      document.getElementById("pix-code").innerText = data.payload;
+      document.getElementById("pix-container").style.display = "block";
+      document.getElementById("pix-status").innerText = "Aguardando confirmação automática...";
+    } else {
+      alert("Erro ao gerar QR Pix. Tente novamente.");
+    }
+  });
 }
-  </script>
+</script>
   
 </body>
 </html>
