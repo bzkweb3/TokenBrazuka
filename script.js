@@ -4,13 +4,9 @@ let carteiraConectada = null;
 async function connectWallet() {
   if (typeof window.ethereum !== 'undefined') {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
+
     try {
       await provider.send("eth_requestAccounts", []);
-
-      const network = await provider.getNetwork();
-      if (network.chainId !== 97) {
-        await switchToBSC_Testnet();
-      }
 
       const signer = provider.getSigner();
       const address = await signer.getAddress();
@@ -19,19 +15,23 @@ async function connectWallet() {
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
 
+      // Oculta botão de conexão após conectar
       const connectBtn = document.getElementById("connect-btn");
       if (connectBtn) connectBtn.style.display = "none";
 
+      // Exibe botão de gerar Pix se existir
       const pixBtn = document.getElementById("pix-button");
       if (pixBtn) pixBtn.style.display = "inline-block";
 
+      // Consulta saldo do token
       mostrarSaldoBRAZ(provider, address);
+
     } catch (err) {
-      alert("Erro ao conectar ou trocar rede.");
+      alert("Erro ao conectar a carteira.");
       console.error(err);
     }
   } else {
-    alert("MetaMask não detectado.");
+    alert("MetaMask ou carteira compatível não detectada.");
   }
 }
 
