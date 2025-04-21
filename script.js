@@ -15,15 +15,12 @@ async function connectWallet() {
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
 
-      // Oculta botão de conexão após conectar
       const connectBtn = document.getElementById("connect-btn");
       if (connectBtn) connectBtn.style.display = "none";
 
-      // Exibe botão de gerar Pix se existir
       const pixBtn = document.getElementById("pix-button");
       if (pixBtn) pixBtn.style.display = "inline-block";
 
-      // Consulta saldo do token
       mostrarSaldoBRAZ(provider, address);
 
     } catch (err) {
@@ -52,24 +49,5 @@ async function mostrarSaldoBRAZ(provider, address) {
   } catch (err) {
     console.error("Erro ao buscar saldo:", err);
     document.getElementById("wallet-balance").innerText = "Erro ao obter saldo";
-  }
-}
-
-async function switchToBSC_Testnet() {
-  const bscTestnet = {
-    chainId: '0x61',
-    chainName: 'Binance Smart Chain Testnet',
-    nativeCurrency: { name: 'BNB Test', symbol: 'tBNB', decimals: 18 },
-    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
-    blockExplorerUrls: ['https://testnet.bscscan.com']
-  };
-
-  try {
-    await window.ethereum.request({
-      method: 'wallet_addEthereumChain',
-      params: [bscTestnet]
-    });
-  } catch (error) {
-    console.error("Erro ao trocar para BSC Testnet:", error);
   }
 }
