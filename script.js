@@ -19,6 +19,7 @@ async function connectWallet() {
       // Mostrar endereço conectado abreviado
       const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
       document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
+      document.getElementById("connect-box").style.display = "none";
 
       const ctaButton = document.querySelector('button.cta');
 if (ctaButton) ctaButton.innerText = "Wallet Conectada";
