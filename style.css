@@ -1,0 +1,275 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, #00A859, #FFCB05, #ffffff);
+  color: #002776;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* TOPBAR */
+.topbar {
+  width: 100%;
+  background-color: #004d40;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+  position: relative;
+}
+
+.brand-logo-box {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.brand-logo {
+  height: 45px;
+  width: auto;
+  margin: 0;
+}
+
+/* HEADER BANNER */
+.header-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.header-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  background-color: #004d40;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 14px 0;
+  margin: 0;
+}
+
+.navbar ul li a {
+  color: #FFCB05;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navbar ul li a:hover {
+  color: #fff;
+}
+
+/* WALLET */
+.wallet-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.wallet-btn {
+  background-color: #FFCB05;
+  color: #002776;
+  padding: 8px 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.wallet-btn:hover {
+  background-color: #ffe44d;
+}
+
+.wallet-info {
+  text-align: right;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+#wallet-address, #wallet-balance {
+  font-weight: bold;
+  color: #000 !important;
+  white-space: nowrap;
+}
+
+/* SECTIONS */
+section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffffdd;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+section:not(:last-of-type) {
+  border-bottom: 4px solid #FFCB05;
+}
+
+section h2, section h3 {
+  color: #00A859;
+}
+
+section h2 {
+  font-size: 1.9rem;
+  margin-bottom: 20px;
+  border-left: 6px solid #00A859;
+  padding-left: 12px;
+}
+
+section h3 {
+  margin-top: 30px;
+}
+
+section p, ul li, ol li {
+  color: #333;
+}
+
+ul li, ol li {
+  margin-left: 20px;
+  padding-left: 6px;
+}
+
+/* MASCOTE */
+#mascote {
+  background: linear-gradient(to bottom, #ffffff, #e0f7fa);
+  border-top: 2px solid #00A859;
+}
+
+#mascote p {
+  color: #004d40;
+}
+
+.mascote-box img {
+  max-width: 220px;
+  max-height: 220px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* PIX */
+#pix-container {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* CTA */
+.cta {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #FFCB05;
+  color: #002776;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background-color: #ffe44d;
+}
+
+/* BOTÃO FIXO */
+#buy-btn-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #FFCB05;
+  color: #002776;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  z-index: 999;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#buy-btn-fixed:hover {
+  background-color: #ffe44d;
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+}
+
+/* FOOTER */
+footer {
+  background-color: #004d40;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+footer a {
+  color: #FFCB05;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.marca-mae img {
+  max-width: 120px;
+  margin-top: 15px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  .wallet-box {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .wallet-btn {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    margin-top: 5px;
+  }
+
+  #wallet-address, #wallet-balance {
+    font-size: 0.75rem;
+  }
+}
