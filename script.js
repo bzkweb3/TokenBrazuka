@@ -1,6 +1,7 @@
 console.log("Site Brazuka carregado com sucesso!");
 let carteiraConectada = null;
 
+// Conexão da carteira
 async function connectWallet() {
   if (typeof window.ethereum !== 'undefined') {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -10,15 +11,9 @@ async function connectWallet() {
       const signer = provider.getSigner();
       const address = await signer.getAddress();
       carteiraConectada = address;
+      localStorage.setItem("wallet", address); // ← salva no navegador
 
-      const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
-      document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
-      document.getElementById("connect-btn").style.display = "none";
-
-      const pixBtn = document.getElementById("pix-button");
-      if (pixBtn) pixBtn.style.display = "inline-block";
-
-      mostrarSaldoBRAZ(provider, address);
+      atualizarInterface(provider, address);
     } catch (err) {
       alert("Erro ao conectar a carteira.");
       console.error(err);
@@ -28,6 +23,19 @@ async function connectWallet() {
   }
 }
 
+// Atualiza interface visual com a carteira conectada
+function atualizarInterface(provider, address) {
+  const shortened = `${address.slice(0, 6)}...${address.slice(-4)}`;
+  document.getElementById("wallet-address").innerText = `Conectado: ${shortened}`;
+  document.getElementById("connect-btn").style.display = "none";
+
+  const pixBtn = document.getElementById("pix-button");
+  if (pixBtn) pixBtn.style.display = "inline-block";
+
+  mostrarSaldoBRAZ(provider, address);
+}
+
+// ABI e função para mostrar saldo BRAZ
 const tokenABI = [
   "function balanceOf(address owner) view returns (uint256)",
   "function decimals() view returns (uint8)"
@@ -48,6 +56,7 @@ async function mostrarSaldoBRAZ(provider, address) {
   }
 }
 
+// Geração do Pix
 function gerarPix() {
   const valor = prompt("Digite o valor em R$ para gerar o QR Pix:");
 
@@ -79,3 +88,16 @@ function gerarPix() {
       }
     });
 }
+
+// 🔄 Reconexão automática ao carregar a página
+window.addEventListener("load", async () => {
+  const address = localStorage.getItem("wallet");
+  if (address && typeof window.ethereum !== 'undefined') {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    carteiraConectada = address;
+    atualizarInterface(provider, address);
+  }
+
+  const connectBtn = document.getElementById("connect-btn");
+  if (connectBtn) connectBtn.addEventListener("click", connectWallet);
+});
