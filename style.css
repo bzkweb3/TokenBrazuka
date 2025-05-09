@@ -41,18 +41,17 @@ body {
 }
 
 /* HEADER BANNER */
-.header-banner img {
+.header-banner {
   width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: cover;
-  display: block;
+  height: 300px;
+  background-color: #004d40;
+  overflow: hidden;
 }
 
 .header-banner img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
