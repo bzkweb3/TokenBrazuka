@@ -44,21 +44,17 @@ body {
 .header-banner {
   width: 100%;
   height: 300px;
-  background: #004d40;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #004d40;
   overflow: hidden;
 }
 
 .header-banner img {
-  width: 100vw;
-  height: auto;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
+
 
 
 /* NAVBAR */
