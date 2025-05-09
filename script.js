@@ -43,7 +43,7 @@ const tokenABI = [
 ];
 
 async function mostrarSaldoBRAZ(provider, address) {
-  const tokenAddress = "0x935814FF77528d57AE6Fc94bC70f09eAcC89ceDE"; // BSC Testnet
+  const tokenAddress = "0x46e5589de013e63f6bA4F95A9238677C2902c2a6"; // BSC Testnet
   const contract = new ethers.Contract(tokenAddress, tokenABI, provider);
 
   try {
