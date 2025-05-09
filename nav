@@ -122,7 +122,7 @@ body {
 
 #wallet-address, #wallet-balance {
   font-weight: bold;
-  color: #ffffff !important;
+  color: #000 !important;
   white-space: nowrap;
 }
 
