@@ -50,6 +50,36 @@ section p, ul li, ol li {
   color: #333;
 }
 
+.navbar {
+  width: 100%;
+  background-color: #004d40;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 0;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 12px 0;
+  margin: 0;
+}
+
+.navbar ul li a {
+  color: #FFCB05;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar ul li a:hover {
+  color: #fff;
+}
+
+
 #mascote {
   background: linear-gradient(to bottom, #ffffff, #e0f7fa);
   border-top: 2px solid #00A859;
@@ -134,15 +164,17 @@ footer a:hover {
 
 .header-banner {
   width: 100%;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background: #004d40;
+  padding: 20px 0;
 }
 
 .header-banner img {
-  width: 100%;
-  max-height: 380px;
-  object-fit: contain;
-  display: block;
-  border-bottom: 2px solid #00A859;
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
 
 .wallet-box {
