@@ -43,19 +43,20 @@ body {
 /* HEADER BANNER */
 .header-banner {
   width: 100%;
-  height: 300px;
-  background: url("Images/banner2.png") no-repeat center center;
-  background-size: cover;
+  background-color: #004d40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
 }
 
-
 .header-banner img {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
+  max-height: 350px; /* limite visual, opcional */
   display: block;
-  margin: 0 auto;
+  object-fit: cover;
 }
 
 
