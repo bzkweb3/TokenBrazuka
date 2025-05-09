@@ -44,9 +44,10 @@ body {
 .header-banner {
   width: 100%;
   height: 300px;
-  background-color: #004d40;
-  overflow: hidden;
+  background: url("Images/banner2.png") no-repeat center center;
+  background-size: cover;
 }
+
 
 .header-banner img {
   width: auto;
