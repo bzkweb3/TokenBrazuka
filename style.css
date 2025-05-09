@@ -139,9 +139,9 @@ footer a:hover {
 
 .header-banner img {
   width: 100%;
-  max-height: 280px;
+  max-height: 380px;
+  object-fit: contain;
   display: block;
-  object-fit: cover;
   border-bottom: 2px solid #00A859;
 }
 
