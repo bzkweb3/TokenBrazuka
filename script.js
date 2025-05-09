@@ -1,3 +1,4 @@
+
 console.log("Site Brazuka carregado com sucesso!");
 let carteiraConectada = null;
 
@@ -11,7 +12,7 @@ async function connectWallet() {
       const signer = provider.getSigner();
       const address = await signer.getAddress();
       carteiraConectada = address;
-      localStorage.setItem("wallet", address); // ← salva no navegador
+      localStorage.setItem("wallet", address);
 
       atualizarInterface(provider, address);
     } catch (err) {
@@ -56,7 +57,7 @@ async function mostrarSaldoBRAZ(provider, address) {
   }
 }
 
-// Geração do Pix
+// Geração do Pix com verificação automática
 function gerarPix() {
   const valor = prompt("Digite o valor em R$ para gerar o QR Pix:");
 
@@ -78,18 +79,36 @@ function gerarPix() {
   })
     .then(res => res.json())
     .then(data => {
-      if (data.qrCode && data.payload) {
+      if (data.qrCode && data.payload && data.txid) {
         document.getElementById("qr-code").src = data.qrCode;
         document.getElementById("pix-code").innerText = data.payload;
         document.getElementById("pix-container").style.display = "block";
         document.getElementById("pix-status").innerText = "Aguardando confirmação automática...";
+        verificarStatusPix(data.txid);
       } else {
         alert("Erro ao gerar QR Pix. Tente novamente.");
       }
     });
 }
 
-// 🔄 Reconexão automática ao carregar a página
+// Verificação periódica do status do Pix
+function verificarStatusPix(txid) {
+  const interval = setInterval(() => {
+    fetch(`https://brazuka-api.vercel.app/pix/status?txid=${txid}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === "confirmado") {
+          clearInterval(interval);
+          document.getElementById("pix-status").innerText = "✅ Pagamento confirmado! Tokens BRAZ em breve na sua carteira.";
+        }
+      })
+      .catch(err => {
+        console.warn("Erro ao verificar status do Pix:", err);
+      });
+  }, 5000);
+}
+
+// Reconexão automática ao carregar a página
 window.addEventListener("load", async () => {
   const address = localStorage.getItem("wallet");
   if (address && typeof window.ethereum !== 'undefined') {
