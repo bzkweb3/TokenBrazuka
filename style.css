@@ -59,6 +59,13 @@ section p, ul li, ol li {
   color: #004d40;
 }
 
+.mascote-box img {
+  max-width: 220px;
+  max-height: 220px;
+  margin: 20px auto;
+  display: block;
+}
+
 footer {
   background-color: #004d40;
   color: #fff;
@@ -132,6 +139,7 @@ footer a:hover {
 
 .header-banner img {
   width: 100%;
+  max-height: 280px;
   display: block;
   object-fit: cover;
   border-bottom: 2px solid #00A859;
@@ -174,8 +182,8 @@ footer a:hover {
 #wallet-address,
 #wallet-balance {
   font-weight: bold;
-  color: #004d40;
-  white-space: nowrap;
+  color: #000 !important; /* nova cor mais visível */
+  white-space: nowrap
 }
 
 section {
