@@ -54,7 +54,7 @@ body {
 .header-banner img {
   width: 100%;
   height: auto;
-  max-height: 350px; /* limite visual, opcional */
+  max-height: 500px; /* limite visual, opcional */
   display: block;
   object-fit: cover;
 }
